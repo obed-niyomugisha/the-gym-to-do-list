@@ -1,6 +1,7 @@
 import { useState } from "react";
+import List from "./components/List";
 
-type Todo = {
+export type Todo = {
   id: string;
   value: string;
   done: boolean;
@@ -40,6 +41,9 @@ export default function App() {
           </button>
         </div>
       </form>
+      <div className="mbs-7">
+        <List todos={todos}></List>
+      </div>
     </main>
   );
 }
