@@ -28,6 +28,11 @@ export default function App() {
     setTodos(todos.toSpliced(index, 1, { ...todo, done: !todo.done }));
   }
 
+  function deleteTask(id: string) {
+    const start = todos.findIndex((todo) => todo.id == id);
+    setTodos(todos.toSpliced(start, 1));
+  }
+
   return (
     <main className="mx-auto mbs-20 w-xl">
       <h1 className="text-center text-8xl text-gray-600/20 font-semibold mbe-14">
@@ -49,7 +54,11 @@ export default function App() {
         </div>
       </form>
       <div className="mbs-7">
-        <List todos={todos} toggleDone={toggleDone}></List>
+        <List
+          todos={todos}
+          toggleDone={toggleDone}
+          deleteTask={deleteTask}
+        ></List>
       </div>
     </main>
   );
