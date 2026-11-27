@@ -10,7 +10,11 @@ export default function List({ todos, toggleDone }: Props) {
   return (
     <ul className="grid gap-3">
       {todos.map((todo) => (
-        <Todo todo={todo} toggleDone={() => toggleDone(todo.id)}></Todo>
+        <Todo
+          todo={todo}
+          toggleDone={() => toggleDone(todo.id)}
+          key={todo.id}
+        ></Todo>
       ))}
     </ul>
   );
