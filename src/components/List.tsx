@@ -1,11 +1,16 @@
 import type { Todo as TodoType } from "../App";
 import Todo from "./Todo";
 
-export default function List({ todos }: { todos: TodoType[] }) {
+type Props = {
+  todos: TodoType[];
+  toggleDone: (id: string) => void;
+};
+
+export default function List({ todos, toggleDone }: Props) {
   return (
     <ul className="grid gap-3">
       {todos.map((todo) => (
-        <Todo {...todo}></Todo>
+        <Todo todo={todo} toggleDone={() => toggleDone(todo.id)}></Todo>
       ))}
     </ul>
   );

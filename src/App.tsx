@@ -21,6 +21,13 @@ export default function App() {
     setInputValue("");
   }
 
+  function toggleDone(id: string) {
+    const index = todos.findIndex((todo) => todo.id == id);
+    const todo = todos[index];
+
+    setTodos(todos.toSpliced(index, 1, { ...todo, done: !todo.done }));
+  }
+
   return (
     <main className="mx-auto mbs-20 w-xl">
       <h1 className="text-center text-8xl text-gray-600/20 font-semibold mbe-14">
@@ -42,7 +49,7 @@ export default function App() {
         </div>
       </form>
       <div className="mbs-7">
-        <List todos={todos}></List>
+        <List todos={todos} toggleDone={toggleDone}></List>
       </div>
     </main>
   );
